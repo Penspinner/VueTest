@@ -8,7 +8,12 @@
         <script src="https://unpkg.com/vue@2.0.1/dist/vue.js"></script>
     </head>
     <body>
-        <div id="app"></div>
-        <script src="js/app.js">{{ message }}</script>
+        <div id="app">
+            {{message}}
+            <p v-if="seen">SEEN</p>
+            <a :href="url" target="_blank">My website</a>
+            <button @click.prevent="toggleSeen">TOGGLE SEEN</button>
+        </div>
+        <script src="js/app.js"></script>
     </body>
 </html>
