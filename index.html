@@ -9,7 +9,9 @@
     </head>
     <body>
         <div id="app">
-            {{message}}
+            <p>Original: {{message}}</p>
+            <p>Reversed: {{message | reverse}}</p>
+            <p>Uppercase: {{message | uppercase}}</p>
             <p v-if="seen">SEEN</p>
             <a :href="url" target="_blank">My website</a>
             <button @click.prevent="toggleSeen">TOGGLE SEEN</button>
