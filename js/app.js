@@ -9,7 +9,17 @@ var app = new Vue
         seen: true,
         url: 'http://stevenliao.tech',
         firstName: 'Steven',
-        lastName: 'Liao'
+        lastName: 'Liao',
+        classObject: 
+        {
+            active: true,
+            big: false
+        },
+        items: 
+        [
+            {title: 'Fuzzy', price: 40},
+            {title: 'Beans', price: 50}
+        ]
     },
     
     // Re-evaluated when dependencies change
@@ -44,7 +54,7 @@ var app = new Vue
     },
     
     // Methods that change data based on other data
-    // It is usually better to use computed 
+    // Best for asynchronous/expensive operations in response to changed data
     watch:
     {
         

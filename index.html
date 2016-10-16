@@ -3,6 +3,7 @@
 <html>
     <head>
         <title>Vue Framework Test</title>
+        <link rel="stylesheet" href="css/style.css">
         
         <!--    Vue Framework   -->
         <script src="https://unpkg.com/vue@2.0.1/dist/vue.js"></script>
@@ -12,10 +13,51 @@
             <p>Original: {{message}}</p>
             <p>Reversed: {{message | reverse}}</p>
             <p>Uppercase: {{message | uppercase}}</p>
-            <p v-if="seen">SEEN</p>
+            <p>Full name: {{fullName}}</p>
+            
+            <!-- The v-bind:class needs to be an object or an array of key,val pairs -->
+            <p v-if="seen" :class="classObject">
+                <span>SEEN</span>
+                <button @click.prevent="">TEST BUTTON</button>
+            </p>
+            <p v-else>UNSEEN</p>
             <a :href="url" target="_blank">My website</a>
             <button @click.prevent="toggleSeen">TOGGLE SEEN</button>
+            
+            <ul>
+                This list does not have indeces
+                <li v-for="item in items">
+                    <p>{{item.title + ": $" + item.price}}</p>
+                </li>
+                This list has indeces
+                <li v-for="(item, index) in items">
+                    {{index + ". " + item.title + ": $" + item.price}}
+                </li>
+            </ul>
+            <ul>
+                Loops through object properties
+                <li v-for="(key, value, index) in classObject">
+                    {{index + ". Class: " + value + ", Name: " + key}}
+                </li>
+            </ul>
+        </div>
+        <div id="todoList">
+            <input
+                v-model="newTodoText"
+                v-on:keyup.enter="addNewTodo"
+                placeholder="Add a todo"
+            >
+            <button v-on:click="loadTodos">Load Todos</button>
+            <ul>
+                <li
+                  is="todo-item"
+                  v-for="(todo, index) in todos"
+                  v-bind:title="todo"
+                  v-on:remove="todos.splice(index, 1)"
+                ></li>
+            </ul>
         </div>
         <script src="js/app.js"></script>
+        <script src="js/todo-list.js"></script>
     </body>
 </html>
