@@ -19,7 +19,8 @@ var app = new Vue
         [
             {title: 'Fuzzy', price: 40},
             {title: 'Beans', price: 50}
-        ]
+        ],
+        numbers: [12, 3, 3, 3, 213, 1, 12, 4523, 2, 259, 9, 0]
     },
     
     // Re-evaluated when dependencies change
@@ -40,6 +41,12 @@ var app = new Vue
                 this.firstName = nameSplit[0];
                 this.lastName = nameSplit[nameSplit.length - 1];
             }
+        },
+        evenNumbers: function()
+        {
+            return this.numbers.filter(function(n) {
+                return n % 2 === 0;
+            });
         }
     },
     
@@ -50,6 +57,13 @@ var app = new Vue
         toggleSeen: function()
         {
             this.seen = !this.seen;
+        },
+        even: function(numbers)
+        {
+            return numbers.filter(function(n)
+            {
+                return n % 2 === 0;
+            });
         }
     },
     

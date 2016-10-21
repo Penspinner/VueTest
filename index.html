@@ -40,6 +40,17 @@
                     {{index + ". Class: " + value + ", Name: " + key}}
                 </li>
             </ul>
+            <div>
+                <h3>Display filtered or sorted results {{numbers}}</h3>
+                <ul>
+                    Computed even numbers in array
+                    <li v-for="n in evenNumbers">{{n}}</li>
+                </ul>
+                <ul>
+                    Pass number array into the even method
+                    <li v-for="n in even(numbers)">{{n}}</li>
+                </ul>
+            </div>
         </div>
         <div id="todoList">
             <input
