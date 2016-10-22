@@ -22,7 +22,7 @@
             </p>
             <p v-else>UNSEEN</p>
             <a :href="url" target="_blank">My website</a>
-            <button @click.prevent="toggleSeen">TOGGLE SEEN</button>
+            <button @click.prevent="toggleSeen" @keyup.enter="toggleSeen">TOGGLE SEEN</button>
             
             <ul>
                 This list does not have indeces
@@ -51,6 +51,22 @@
                     <li v-for="n in even(numbers)">{{n}}</li>
                 </ul>
             </div>
+            <span>Multiline message is:</span>
+            <p style="white-space: pre">{{ message }}</p>
+            <br>
+            <div>
+                Edit either of these to change the message.
+                <p>
+                    <textarea v-model="message" placeholder="add multiple lines"></textarea>
+                    <input type="text" v-model="message">
+                </p>
+            </div>
+            <my-component sender="Steven" message="What's crackin?"></my-component>
+            <!--    Use v-bind when evaluating JavaScript expression    -->
+            <button v-on:click="show = !show">Toggle</button>
+            <transition name="fade">
+                <p v-if="show">hello</p>
+            </transition>
         </div>
         <div id="todoList">
             <input
